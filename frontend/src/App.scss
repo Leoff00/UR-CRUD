@@ -1,0 +1,25 @@
+.App {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-rows: auto 2fr auto;
+  grid-template-areas:
+    "Home Home"
+    "Aside Main"
+    "Footer Footer";
+}
+
+header {
+  grid-area: Home;
+}
+
+aside {
+  grid-area: Aside;
+}
+
+main {
+  grid-area: Main;
+}
+
+footer {
+  grid-area: Footer;
+}

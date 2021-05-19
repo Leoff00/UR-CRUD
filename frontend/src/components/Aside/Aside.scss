@@ -1,0 +1,46 @@
+aside {
+  width: 150px;
+  height: 80vh;
+  margin-top: 10px;
+
+  display: flex;
+  flex-grow: 1;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  box-shadow: var(--aside-shadows);
+  border-radius: 10px;
+
+  background-color: var(--blue-one);
+
+  transition: 0.3s;
+
+  .asideA {
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    margin: 10px 0px;
+
+    .asideImg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .asideText {
+      color: var(--black-c);
+      margin-left: 15px;
+      transition: 0.2s;
+    }
+  }
+}
+
+aside:hover {
+  filter: brightness(0.9);
+  transition: 0.5s;
+}
+
+.asideA .asideText:hover {
+  transition: 0.2s;
+  color: var(--white-c);
+}

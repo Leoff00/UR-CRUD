@@ -1,0 +1,12 @@
+main {
+  width: 95%;
+  height: 500px;
+
+  background-color: var(--gray-white);
+  
+  margin: auto auto;
+  border-radius: 15px;
+  box-shadow: var(--contents-shadows);
+
+  overflow-y: scroll;
+}

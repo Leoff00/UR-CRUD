@@ -1,0 +1,22 @@
+.homeContainer {
+  width: 95%;
+  height: 500px;
+
+  background-color: var(--gray-white);
+
+  margin: auto auto;
+  border-radius: 15px;
+  box-shadow: var(--contents-shadows);
+
+  .homeTitle {
+    margin: 10px;
+
+    font-size: 4rem;
+  }
+
+  .homeSubTitle {
+    margin: 15px;
+
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,116 @@
+.contentApp {
+  margin: 0;
+  padding: 0;
+
+  .contentTitle {
+    margin: 10px;
+
+    font-size: 4rem;
+  }
+
+  .contentSubTitle {
+    margin: 15px;
+
+    font-size: 1.2rem;
+  }
+
+  .inputContainer {
+    margin: 5px 5px;
+
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-around;
+
+    .contentLabel {
+      margin: auto;
+    }
+
+    .contentInput {
+      width: 25%;
+      height: 30px;
+
+      font-family: Arial, sans-serif;
+
+      outline: none;
+      margin: 5px 0px;
+    }
+  }
+
+  .containerButton {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    margin: 0px 10px;
+    border-radius: 20px;
+    outline: none;
+  }
+
+  .contentButton {
+    width: 80px;
+    height: 30px;
+
+    margin: 5px 15px;
+    border-radius: 10px;
+    outline: none;
+    text-decoration: none;
+    border: none;
+
+    font-size: 0.8rem;
+  }
+
+  .contentButton:nth-child(1) {
+    transition: 0.3s;
+
+    background-color: var(--green-one);
+    color: var(--white-c);
+  }
+
+  .contentButton:nth-child(2) {
+    transition: 0.3s;
+
+    background-color: var(--gray-d);
+    color: var(--white-c);
+  }
+
+  .contentButton:nth-child(1):hover {
+    filter: brightness(0.8) contrast(1);
+    transition: 0.3s;
+
+    background-color: var(--green-two);
+    color: var(--white-c);
+  }
+
+  .contentButton:nth-child(2):hover {
+    transition: 0.3s;
+
+    background-color: var(--red-one);
+    color: var(--white-c);
+  }
+
+  th {
+    display: flex;
+  }
+
+  tr {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  td {
+    width: 100%;
+    margin: 2px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .tdContainerButton {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+}
