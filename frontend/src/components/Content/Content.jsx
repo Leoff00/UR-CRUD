@@ -1,8 +1,13 @@
 import "./Content.scss";
+import { useEffect, useState, createContext } from "react";
+import { useHistory } from "react-router-dom";
+
+import { API } from "../../Api";
+import { css } from "@emotion/core";
+
+import ClipLoader from "react-spinners/ClipLoader";
 
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { Api } from "../../Api";
 
 //reset input states
 const initialState = {
@@ -11,45 +16,70 @@ const initialState = {
   age: 0,
 };
 
+const idContext = createContext();
+
 export default function Content(props) {
+  const [didmount, setDidmount] = useState(true);
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [age, setAge] = useState(0);
+  let [loading, setLoading] = useState(true);
 
+  // eslint-disable-next-line no-unused-vars
+  let [color, setColor] = useState("##1d251f;");
+
+  //centering the loader.
+  const override = css`
+    display: block;
+    margin: 0 auto;
+  `;
+
+  const history = useHistory();
   const values = { name, email, age };
 
-  //get/load the mock api
+  //get/load req the api
   useEffect(() => {
+    setDidmount(true); //component main
+
     (async function getContents() {
       try {
-        const { data } = await axios.get(Api);
+        const { data } = await axios.get(`${API}/users`);
         setUsers(data);
+        if (data) {
+          setLoading(false);
+        }
       } catch (err) {
         console.log(err);
       }
     })();
 
     return () => {
-      // console.log('Unmount the component');
+      setDidmount(false);
     };
-  }, []);
+  }, [users]);
 
-  //post req to the mock api
+  //post req to the api
   async function submit(e) {
     e.preventDefault();
 
     if (name === "" || email === "" || age === "") {
-      alert("Por favor, preencha os dados.");
+      alert("Please fill the fields.");
       return;
     } else if (age <= 0) {
-      alert("Por favor, digite um número válido.");
+      alert("Please enter a valid number.");
+      return;
+    } else if (age > 100) {
+      alert("Please enter a valid number.");
       return;
     }
+
     try {
-      const { data } = await axios.post(Api, values);
+      const { data } = await axios.post(`${API}/create`, values);
       const newData = [...users, data]; //adding the new data with the current data
+      alert("Data successfully registered!");
       setUsers(newData);
+      history.push("/users");
     } catch (err) {
       console.log(err);
     }
@@ -62,19 +92,25 @@ export default function Content(props) {
     setAge(initialState.age);
   }
 
-  //put req (edit) datas of mock api.
-  async function handleUpdate(user) {
-    console.log(user.id);
+  //redirect to put req (edit) datas of the api.
+  function handleUpdate(user) {
+    history.push(`/edit/${user._id}`);
   }
 
-  //delete req datas of mock api.
+  //delete req datas of the api.
   async function handleDelete(user) {
     try {
-      await axios.delete(`${Api}/${user.id}`);
-      setUsers(users.filter((deletedUser) => user.id !== deletedUser.id));
+      await axios.delete(`${API}/delete/${user._id}`);
+      setUsers(users.filter((deletedUser) => user._id !== deletedUser.id));
+      alert("Data deleted successfully!");
     } catch (err) {
       console.log(err);
     }
+  }
+
+  //component Content unmount.
+  if (!didmount) {
+    return null;
   }
 
   return (
@@ -147,8 +183,7 @@ export default function Content(props) {
 
       <table className="table">
         <thead>
-          <tr>
-            <th scope="row">Id</th>
+          <tr className="header">
             <th scope="row">Name</th>
             <th scope="row">Email</th>
             <th scope="row">Age</th>
@@ -156,20 +191,32 @@ export default function Content(props) {
         </thead>
 
         <tbody>
+          <tr>
+            <td>
+              <ClipLoader
+                color={color}
+                size="50px"
+                css={override}
+                loading={loading}
+              />
+            </td>
+          </tr>
+
           {/* Loading the api in HTML */}
           {users.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
+            <tr className="tableContent" key={user._id}>
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.age}</td>
-              <td className="tdContainerButton">
+              <td id="edit">
                 <button
                   onClick={() => handleUpdate(user)}
                   className="btn btn-outline-info"
                 >
                   <i className="fa fa-pencil"></i>
                 </button>
+              </td>
+              <td id="delete">
                 <button
                   onClick={() => handleDelete(user)}
                   className="btn btn-outline-danger ml-2"
@@ -185,3 +232,5 @@ export default function Content(props) {
     </div>
   );
 }
+
+export { idContext };

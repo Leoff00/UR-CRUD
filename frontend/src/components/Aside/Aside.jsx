@@ -1,15 +1,17 @@
 import "./Aside.scss";
+
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
 import pic1 from "../../assets/img/home.svg";
 import pic2 from "../../assets/img/user.svg";
-import { useState } from "react";
+
+const titles = {
+  home: "UR CRUD | HOME",
+  users: "UR CRUD | USERS",
+};
 
 export default function Aside(props) {
-  const titles = {
-    home: "UR CRUD | HOME",
-    users: "UR CRUD | USERS",
-  };
-
   // eslint-disable-next-line no-unused-vars
   const [title, setTitle] = useState(titles);
 

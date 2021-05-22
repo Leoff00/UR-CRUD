@@ -76,7 +76,7 @@
   }
 
   .contentButton:nth-child(1):hover {
-    filter: brightness(0.8) contrast(1);
+    filter: brightness(0.8) contrast(2.5);
     transition: 0.3s;
 
     background-color: var(--green-two);
@@ -91,26 +91,51 @@
   }
 
   th {
-    display: flex;
+    border: none;
   }
 
-  tr {
+  .header {
+    border: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 150px;
+  }
+
+  .tableContent {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
   }
 
   td {
-    width: 100%;
-    margin: 2px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    padding: 2px 0;
+    margin: 0;
+    width: 55%;
   }
 
-  .tdContainerButton {
+  #edit {
+    width: 10%;
     display: flex;
     align-items: flex-end;
     justify-content: flex-end;
+    align-self: flex-start;
+  }
+
+  #delete {
+    width: 10%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    align-self: flex-start;
+  }
+
+  .loader {
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
