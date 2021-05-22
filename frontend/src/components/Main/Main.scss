@@ -3,10 +3,18 @@ main {
   height: 500px;
 
   background-color: var(--gray-white);
-  
+
   margin: auto auto;
   border-radius: 15px;
   box-shadow: var(--contents-shadows);
 
   overflow-y: scroll;
+  overflow-x: hidden;
+
+  transition: 0.3s;
+}
+
+main:hover {
+  filter: brightness(0.93);
+  transition: 0.3s;
 }
