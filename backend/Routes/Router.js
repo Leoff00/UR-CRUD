@@ -3,12 +3,17 @@ const Post = require("../models/Posts");
 
 const router = express.Router();
 
-router.route("/users").get(async (req, res) => {
-  const foundPosts = await Post.find();
-  res.json(foundPosts);
+router.route("/users").get((req, res) => {
+  Post.find()
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
-router.route("/create").post(async (req, res) => {
+router.route("/create").post((req, res) => {
   const name = req.body.name;
   const email = req.body.email;
   const age = req.body.age;
@@ -19,7 +24,14 @@ router.route("/create").post(async (req, res) => {
     age,
   });
 
-  await newPost.save();
+  newPost
+    .save()
+    .then(() => {
+      // console.log("Data deleted successfully!");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 router.route("/edit/:_id").put((req, res) => {
@@ -30,7 +42,6 @@ router.route("/edit/:_id").put((req, res) => {
       post.name = req.body.name;
       post.email = req.body.email;
       post.age = req.body.age;
-
       post.save();
     })
     .catch((err) => {
@@ -38,12 +49,16 @@ router.route("/edit/:_id").put((req, res) => {
     });
 });
 
-router.route("/delete/:_id").delete(async (req, res) => {
-  const deleteUser = await Post.findByIdAndDelete({
+router.route("/delete/:_id").delete((req, res) => {
+  Post.findByIdAndDelete({
     _id: req.params._id,
-  });
-
-  deleteUser;
+  })
+    .then(() => {
+      // console.log("Data deleted successfully!");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = router;
