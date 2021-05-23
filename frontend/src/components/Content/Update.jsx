@@ -30,11 +30,8 @@ export default function Update(props) {
       return;
     }
     try {
-      const { data } = await axios.put(
-        `${API}/edit/${_id}`, //resolver
-        values
-      );
-      const newData = [...users, data]; //adding the new data with the current data
+      const { data } = await axios.put(`${API}/edit/${_id}`, values);
+      const newData = [...users, data];
       setUsers(newData);
       alert("Successfully changed data!");
     } catch (err) {

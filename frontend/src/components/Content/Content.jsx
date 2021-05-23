@@ -1,5 +1,5 @@
 import "./Content.scss";
-import { useEffect, useState, createContext } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { API } from "../../Api";
@@ -15,8 +15,6 @@ const initialState = {
   email: "",
   age: 0,
 };
-
-const idContext = createContext();
 
 export default function Content(props) {
   const [didmount, setDidmount] = useState(true);
@@ -76,7 +74,7 @@ export default function Content(props) {
 
     try {
       const { data } = await axios.post(`${API}/create`, values);
-      const newData = [...users, data]; //adding the new data with the current data
+      const newData = [...users, data];
       alert("Data successfully registered!");
       setUsers(newData);
       history.push("/users");
@@ -232,5 +230,3 @@ export default function Content(props) {
     </div>
   );
 }
-
-export { idContext };

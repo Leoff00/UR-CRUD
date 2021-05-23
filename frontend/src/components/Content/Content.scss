@@ -95,6 +95,8 @@
   }
 
   .header {
+    margin: 0px;
+    padding: 0px;
     border: none;
     width: 100%;
     display: grid;
@@ -130,12 +132,5 @@
     align-items: flex-end;
     justify-content: flex-end;
     align-self: flex-start;
-  }
-
-  .loader {
-    background-color: blue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }

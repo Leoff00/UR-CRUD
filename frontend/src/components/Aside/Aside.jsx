@@ -25,7 +25,7 @@ export default function Aside(props) {
 
   return (
     <aside>
-      <Link onClick={handleTitleHome} className="asideA" to="/">
+      <Link onClick={() => handleTitleHome()} className="asideA" to="/">
         <img className="asideImg" src={pic1} alt="Home" />
         <span className="asideText">Home</span>
       </Link>

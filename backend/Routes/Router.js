@@ -1,4 +1,5 @@
 const express = require("express");
+
 const Post = require("../models/Posts");
 
 const router = express.Router();
@@ -26,9 +27,7 @@ router.route("/create").post((req, res) => {
 
   newPost
     .save()
-    .then(() => {
-      // console.log("Data deleted successfully!");
-    })
+    .then(() => {})
     .catch((err) => {
       console.log(err);
     });
@@ -42,7 +41,12 @@ router.route("/edit/:_id").put((req, res) => {
       post.name = req.body.name;
       post.email = req.body.email;
       post.age = req.body.age;
-      post.save();
+      post
+        .save()
+        .then(() => {})
+        .catch((err) => {
+          console.log(err);
+        });
     })
     .catch((err) => {
       console.log(err);
@@ -53,9 +57,7 @@ router.route("/delete/:_id").delete((req, res) => {
   Post.findByIdAndDelete({
     _id: req.params._id,
   })
-    .then(() => {
-      // console.log("Data deleted successfully!");
-    })
+    .then(() => {})
     .catch((err) => {
       console.log(err);
     });

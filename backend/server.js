@@ -1,7 +1,10 @@
 const express = require("express");
 const cors = require("cors");
+
 const mongoose = require("mongoose");
+
 const router = require("./Routes/Router");
+
 const { mongoURI } = require("./config/db");
 
 const PORT = 3001;
