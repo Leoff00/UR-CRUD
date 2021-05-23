@@ -29,7 +29,7 @@ If you want to change something in the project make a pull request. i will accep
 This is a personal project to get a large knowledge about the technologies, this is the first time that i use the MERN Stack.
 
 # How to use
-If you want to contribuing with this project make a fork of this project. use this project in your machine you'll need to install the dependecies. To install type: <b> npm i or yarn if you are using yarn</b>. After this enter in each <b>DIR</b> in your terminal and type: <b> npm start </b>. The project is running in PORTS 3000 and 3001.
+If you want to contribuing with this project make a fork of this project or just clone. To use this project in your machine you'll need to install the dependecies. To install type: <b> npm i or yarn if you are using yarn</b>. After this enter in each <b>DIR</b> in your terminal and type: <b> npm start </b>. The project is running in PORTS 3000 and 3001.
 
 # Dependencies
 <a href="https://axios-http.com/docs/intro">Axios</a> <br>
