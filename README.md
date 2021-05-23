@@ -20,7 +20,7 @@ This project helped me a lot to understand how an API REST works and also go dee
 &nbsp;
 <img width="80px" src="./Screenshots/react.png" alt="React">
 &nbsp;
-<img width="80px" src="./Screenshots/Node.png" alt="NodeJS">
+<img width="80px" src="./Screenshots/node.png" alt="NodeJS">
 
 # Issues
 
